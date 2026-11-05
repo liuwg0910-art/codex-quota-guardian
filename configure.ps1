@@ -12,6 +12,7 @@ $guardianPythonw = Join-Path $guardianBase 'pythonw.exe'
 $guardianLauncher = Join-Path $PSScriptRoot 'launch.pyw'
 $guardianVbs = 'CreateObject("WScript.Shell").Run """' + $guardianPythonw + '"" ""' + $guardianLauncher + '""", 0, False'
 $guardianVbs | Set-Content -LiteralPath (Join-Path $PSScriptRoot '启动额度条.vbs') -Encoding Unicode
+New-Item -ItemType Directory -Force -Path (Join-Path $PSScriptRoot 'hooks') | Out-Null
 $guardianHookCommand = '"' + $guardianPython + '" "' + (Join-Path $PSScriptRoot 'scripts\refresh_bridge.py') + '"'
 $guardianHookHandler = @{type='command'; command=$guardianHookCommand; timeout=10}
 @{hooks=@{SessionStart=@(@{hooks=@($guardianHookHandler)}); UserPromptSubmit=@(@{hooks=@($guardianHookHandler)})}} | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'hooks\hooks.json') -Encoding utf8
