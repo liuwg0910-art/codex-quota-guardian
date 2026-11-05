@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+data/
+schemas/
+dist/
+.mcp.json
+mcp.json
+hooks/hooks.json
+启动额度条.vbs
+.env*

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "codex-quota-guardian",
+  "version": "0.5.0",
+  "extensions": {"com.openai": {"hooks": "./hooks/hooks.json"}},
+  "description": "Codex 额度悬浮条与额度恢复后的任务续跑守卫"
+}
